@@ -17,9 +17,9 @@ const board = document.getElementById("board");
 const playertag = document.getElementById("player");
 const restart = document.getElementById("restart");
 
-board.addEventListener("click", checkForWinner);
+board.addEventListener("click", checkTurn);
 
-function checkForWinner(event) {
+function checkTurn(event) {
   if (document.getElementById(event.target.id).innerHTML === "") {
     if (player % 2) {
       document.getElementById(event.target.id).innerHTML = `<span>X</span>`;
@@ -44,14 +44,14 @@ const checkWinner = () => {
         playerX.includes(condition[1].toString()) &&
         playerX.includes(condition[2].toString())
       ) {
-        board.removeEventListener("click", checkForWinner);
+        board.removeEventListener("click", checkTurn);
         return (playertag.innerHTML = "Player X wins!");
       } else if (
         playerO.includes(condition[0].toString()) &&
         playerO.includes(condition[1].toString()) &&
         playerO.includes(condition[2].toString())
       ) {
-        board.removeEventListener("click", checkForWinner);
+        board.removeEventListener("click", checkTurn);
         return (playertag.innerHTML = "Player O wins!");
       } else if (
         playerX.length === 5 &&
